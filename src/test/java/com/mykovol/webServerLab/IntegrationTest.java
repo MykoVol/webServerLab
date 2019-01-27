@@ -23,18 +23,12 @@ public class IntegrationTest {
     public void serverCannotStartAgain() throws IOException {
         try {
             webServer.start();
-        } catch (IllegalArgumentException e) {
-            assertEquals(IllegalArgumentException.class, e);
+        } catch (Exception e) {
+            assertTrue(e instanceof IllegalStateException);
         }
 
     }
 
-
-    @Test
-    public void sleep() throws IOException, InterruptedException {
-        Thread.sleep(100000);
-
-    }
 
     @Test
     public void serverCanHandleGet() throws IOException {
